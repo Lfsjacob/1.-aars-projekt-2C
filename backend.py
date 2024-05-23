@@ -1,4 +1,22 @@
 import sqlite3
+from flask import request
+
+
+def get_variables():
+    x = request.form.get('første_variabel')
+    return x
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 conn = sqlite3.connect(database='database.db')

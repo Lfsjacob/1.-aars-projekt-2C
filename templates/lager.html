@@ -5,6 +5,15 @@
 {% block content%}
 
 <div>
+    <br>
+    <h2>Tilføj vare:</h2>
+    <form action="" method="POST">
+        <label for="første_variabel">Første variabel</label>
+        <input type="text" id="første_variabel" name="første_variabel">
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if første_variabel %}
     <h1>Lageroversigt</h1>
 
     <table>
@@ -14,8 +23,10 @@
         </tr>
 
         <tr>
-            <td>What</td>
+            <td>{{ første_variabel }}</td>
+            <td>Pant</td>
         </tr>
     </table>
+    {% endif %}
 </div>
 {% endblock %}
