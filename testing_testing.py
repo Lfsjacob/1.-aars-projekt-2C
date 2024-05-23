@@ -1,2 +1,1 @@
-print("testing testing")
-laks
+print("testing testostorone")
