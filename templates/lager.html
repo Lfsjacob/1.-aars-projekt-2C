@@ -6,27 +6,59 @@
 
 <div>
     <br>
-    <h2>Tilføj vare:</h2>
-    <form action="" method="POST">
-        <label for="første_variabel">Første variabel</label>
-        <input type="text" id="første_variabel" name="første_variabel">
-        <input type="submit" value="Submit">
-    </form>
-
-    {% if første_variabel %}
     <h1>Lageroversigt</h1>
 
     <table>
         <tr>
-            <th>Header</th>
-            <th>Header 2</th>
+            <th>Produktnavn</th>
+            <th>Produkttype</th>
+            <th>Produktnummer</th>
+            <th>Producent</th>
+            <th>Antal</th>
+            <th>Mål</th>
+            <th>Pris</th>
         </tr>
 
+        {% for item in data_rows %}
         <tr>
-            <td>{{ første_variabel }}</td>
-            <td>Pant</td>
+            {% for item in item %}
+            <td>{{ item }}</td>
+            {% endfor %}
         </tr>
-    </table>
-    {% endif %}
+        {% endfor%}
+    </table><br>
+    <br>
+
+    <h2>Tilføj vare:</h2>
+    <form action="" method="POST">
+        <label for="produktnavn">Produktnavn</label><br>
+        <input type="text" id="produktnavn" name="produktnavn"><br>
+        <br>
+        
+        <label for="produkttype">Produkttype</label><br>
+        <input type="text" id="produkttype" name="produkttype"><br>
+        <br>
+
+        <label for="produktnummer">Produktnummer</label><br>
+        <input type="text" id="produktnummer" name="produktnummer"><br>
+        <br>
+
+        <label for="producent">Producent</label><br>
+        <input type="text" id="producent" name="producent"><br>
+        <br>
+
+        <label for="antal">Antal</label><br>
+        <input type="text" id="antal" name="antal"><br>
+        <br>
+
+        <label for="mål">Mål</label><br>
+        <input type="text" id="mål" name="mål"><br>
+        <br>
+
+        <label for="pris">Pris</label><br>
+        <input type="text" id="pris" name="pris"><br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
 </div>
 {% endblock %}
