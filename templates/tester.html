@@ -1,0 +1,226 @@
+
+<!DOCTYPE html> 
+<html lang="en"> 
+  
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content= 
+          "width=device-width, initial-scale=1.0"> 
+    <title>Popup Form</title>
+    <style> 
+        body { 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            background-color: #f0f0f0; 
+            font-family: Arial, sans-serif; 
+        } 
+  
+        .btn-open-popup { 
+            padding: 12px 24px; 
+            font-size: 18px; 
+            background-color: #1D407B; 
+            color: #fff; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            transition: background-color 0.3s ease; 
+        } 
+  
+        .btn-open-popup:hover { 
+            background-color: #778DB0; 
+        } 
+  
+        .overlay-container { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0, 0, 0, 0.6); 
+            justify-content: center; 
+            align-items: center; 
+            opacity: 0; 
+            transition: opacity 0.3s ease; 
+        } 
+  
+        .popup-box { 
+            background: #fff; 
+            padding: 24px; 
+            border-radius: 12px; 
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); 
+            width: 320px; 
+            text-align: center; 
+            opacity: 0; 
+            transform: scale(0.8); 
+            animation: fadeInUp 0.5s ease-out forwards; 
+        } 
+  
+        .form-container { 
+            display: flex; 
+            flex-direction: column; 
+        } 
+  
+        .form-label { 
+            margin-bottom: 10px; 
+            font-size: 16px; 
+            color: #444; 
+            text-align: left; 
+        } 
+  
+        .form-input { 
+            padding: 10px; 
+            margin-bottom: 20px; 
+            border: 1px solid #ccc; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            width: 100%; 
+            box-sizing: border-box; 
+        }
+        
+        .form-measurements-input { 
+            padding: 10px; 
+            margin-bottom: 20px; 
+            border: 1px solid #ccc; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            width: 78%; 
+            box-sizing: border-box; 
+        }
+
+        .form-unit-input { 
+            padding: 10px; 
+            margin-bottom: 20px; 
+            border: 1px solid #ccc; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            width: 20%; 
+            box-sizing: border-box; 
+        }
+  
+        .btn-submit, 
+        .btn-close-popup { 
+            padding: 12px 24px; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            transition: background-color 0.3s ease, color 0.3s ease; 
+        } 
+  
+        .btn-submit { 
+            background-color: #1D407B; 
+            color: #fff; 
+        } 
+  
+        .btn-close-popup { 
+            margin-top: 12px; 
+            background-color: #e74c3c; 
+            color: #fff; 
+        } 
+  
+        .btn-submit:hover {
+            background-color: #778DB0; 
+        }
+
+        .btn-close-popup:hover { 
+            background-color: #ee1800; 
+        } 
+  
+        /* Keyframes for fadeInUp animation */ 
+        @keyframes fadeInUp { 
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            } 
+  
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            } 
+        } 
+  
+        /* Animation for popup */ 
+        .overlay-container.show { 
+            display: flex; 
+            opacity: 1; 
+        } 
+    </style> 
+</head> 
+  
+<body> 
+  
+    <button class="btn-open-popup" onclick="togglePopup()"> 
+      Open Popup Form 
+      </button> 
+  
+    <div id="popupOverlay" 
+         class="overlay-container"> 
+        <div class="popup-box"> 
+            <h2 style="color: #1D407B;">Bestilt produkt</h2> 
+            <form class="form-container" method="POST"> 
+                <label class="form-label" for="pnavn">Produktnavn:*</label> 
+                <input class="form-input" type="text" placeholder="..." id="pnavn" name="pnavn" required> 
+  
+                <label class="form-label" for="EAN">Produktnummer:</label> 
+                <input class="form-input" type="text" placeholder="..." id="EAN" name="EAN">
+
+                <label class="form-label" for="antal">Antal:*</label> 
+                <input class="form-input" type="number" placeholder="..." id="antal" name="antal" required>
+                
+                <label class="form-label" for="bredde">Bredde:*</label> 
+                <div style="float:left;">
+                    <input class="form-measurements-input" type="number" placeholder="..." id="bredde" name="bredde" required>
+                    <select class="form-unit-input" id="benhed" name="benhed" required>
+                    <option value="blank">---</option>
+                    <option value="mm">mm</option>
+                    <option value="cm">cm</option>
+                    <option value="m">m</option>
+                    </select>
+                </div>
+                
+                <label class="form-label" for="længde">Længde:*</label> 
+                <div style="float:left;">
+                    <input class="form-measurements-input" type="number" placeholder="..." id="længde" name="længde" required>
+                    <select class="form-unit-input" id="lenhed" name="lenhed" required>
+                    <option value="blank">---</option>
+                    <option value="mm">mm</option>
+                    <option value="cm">cm</option>
+                    <option value="m">m</option>
+                    </select>
+                </div>
+
+                <label class="form-label" for="producent">Producent:</label> 
+                <input class="form-input" type="text" placeholder="..." id="producent" name="producent">
+
+                <label class="form-label" for="pkategori">Produktkategori:</label> 
+                <input class="form-input" type="text" placeholder="..." id="pkategori" name="pkategori">
+
+                <label class="form-label" for="pris">Pris:</label> 
+                <input class="form-input" type="text" placeholder="..." id="pris" name="pris">
+  
+                <button class="btn-submit" 
+                        type="submit"> 
+                  Indsend 
+                  </button> 
+            </form> 
+  
+            <button class="btn-close-popup" 
+                    onclick="togglePopup()"> 
+              Luk 
+              </button> 
+        </div> 
+    </div> 
+  
+    <script> 
+        function togglePopup() { 
+            const overlay = document.getElementById('popupOverlay'); 
+            overlay.classList.toggle('show'); 
+        } 
+    </script> 
+</body> 
+  
+</html>
