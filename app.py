@@ -1,5 +1,5 @@
-import multiprocessing
 import time
+import sqlite3
 
 import flask
 
@@ -23,4 +23,4 @@ def bestilte_varer():
     pris = flask.request.form.get('pris')
     produktinfo = [produktnavn, produktnummer, antal, mål, producent,produktkategori, pris]
     print(produktinfo)
-    return flask.render_template("tester.html")
+    return flask.render_template("bestilte_varer.html")
