@@ -6,7 +6,14 @@ import flask
 app = flask.Flask(__name__)
 
 
-start = time.time()
+
+@app.route('/', methods=['POST', 'GET'])
+def home():
+    return flask.render_template("base.html")
+
+@app.route('/lager', methods=['POST', 'GET'])
+def lager():
+    return flask.render_template("lager.html")
 
 @app.route('/bestilte_varer', methods=['POST', 'GET'])
 def bestilte_varer():
@@ -24,3 +31,7 @@ def bestilte_varer():
     produktinfo = [produktnavn, produktnummer, antal, mål, producent,produktkategori, pris]
     print(produktinfo)
     return flask.render_template("bestilte_varer.html")
+
+@app.route('/prisliste', methods=['POST', 'GET'])
+def prisliste():
+    return flask.render_template("prisliste.html")

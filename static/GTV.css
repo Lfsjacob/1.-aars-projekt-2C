@@ -10,17 +10,6 @@
     background-color: #778DB0!important;
 }
 
-/* body { 
-    margin: 0; 
-    padding: 0; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    height: 100vh; 
-    background-color: #f0f0f0; 
-    font-family: Arial, sans-serif; 
-}  */
-
 .btn-open-popup { 
     padding: 12px 24px; 
     font-size: 18px; 
@@ -161,3 +150,14 @@
     display: flex; 
     opacity: 1; 
 } 
+
+.pdf {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+}
+
+.pdf {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
