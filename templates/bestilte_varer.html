@@ -7,10 +7,10 @@
 {% block content%}
 <body> 
     <div style="float:left">
-    <image src="static/Add_moerk_hvid.png" width="50" height="50"></image>
     </div>
     <button class="btn-open-popup" onclick="togglePopup()"> 
-      Tilføj bestilt produkt 
+        <image src="static/Add_moerk_hvid.png" width="50" height="50"></image> 
+        Tilføj bestilt vare
       </button> 
     
     <div id="popupOverlay" 
@@ -37,10 +37,10 @@
                     <input class="form-measurements-input" type="number" placeholder="..." id="bredde" name="bredde" required>
                     
                     <select class="form-unit-input" id="benhed" name="benhed" required>
-                    <option value="blank">---</option>
-                    <option value="mm">mm</option>
-                    <option value="cm">cm</option>
-                    <option value="m">m</option>
+                        <option value="blank">---</option>
+                        <option value="mm">mm</option>
+                        <option value="cm">cm</option>
+                        <option value="m">m</option>
                     </select>
                 
                     <label class="form-label" for="længde">Længde:*</label> 
@@ -50,10 +50,10 @@
                     <input class="form-measurements-input" type="number" placeholder="..." id="længde" name="længde" required>
                     
                     <select class="form-unit-input" id="lenhed" name="lenhed" required>
-                    <option value="blank">---</option>
-                    <option value="mm">mm</option>
-                    <option value="cm">cm</option>
-                    <option value="m">m</option>
+                        <option value="blank">---</option>
+                        <option value="mm">mm</option>
+                        <option value="cm">cm</option>
+                        <option value="m">m</option>
                     </select>
                 
                     <input class="form-input-side-by-side" type="text" placeholder="..." id="producent" name="producent">

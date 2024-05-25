@@ -1,4 +1,3 @@
-import time
 import sqlite3
 
 import flask
@@ -30,6 +29,31 @@ def bestilte_varer():
     pris = flask.request.form.get('pris')
     produktinfo = [produktnavn, produktnummer, antal, mål, producent,produktkategori, pris]
     print(produktinfo)
+
+    try:
+        conn = sqlite3.connect(database="GTV_Tagdækning_ApS.db")
+        query = """INSERT INTO Bestillingsoversigt(Produktnavn, Produktnummer, Antal, Mål, Producent, Produktkategori, Pris) VALUES(?, ?, ?, ?, ?, ?, ?)"""
+        data = produktnavn, produktnummer, antal, mål, producent, produktkategori, pris
+
+        try:
+            cur = conn.cursor()
+            cur.execute(query, data)
+            conn.commit()
+        except sqlite3.Error as e:
+            conn.rollback()
+            print(f"Kunne ikke indsætte!: {e}")
+        except Exception as e:
+            print(f"Der skete en fejl: {e}")
+
+
+
+
+
+
+    except sqlite3.Error as e:
+        conn.rollback()
+        print(f"Kunne ikke indsætte!: {e}")
+
     return flask.render_template("bestilte_varer.html")
 
 @app.route('/prisliste', methods=['POST', 'GET'])
