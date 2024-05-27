@@ -1,0 +1,28 @@
+.form-input-login { 
+    padding: 10px; 
+    margin-bottom: 20px; 
+    border: 1px solid #1D407B; 
+    border-radius: 8px; 
+    font-size: 16px; 
+    width: 256px; 
+    box-sizing: border-box; 
+}
+.form-label-login { 
+    margin-bottom: 20px; 
+    font-size: 16px; 
+    color: #444; 
+    width: 256px;
+    text-align: left; 
+} 
+.btn-submit{ 
+    padding: 12px 24px; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #1D407B; 
+    color: #fff; 
+}
+.gtvdark{
+    color: white
+}
