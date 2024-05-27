@@ -31,6 +31,7 @@ def match(produktnavn, produktnummer, antal, mål, producent,produktkategori, pr
     except Exception as e:
         print(f"Der skete en fejl: {e}")
 
+
 def add_to_product(id, antal):
     try:
         conn = sqlite3.connect(database="GTV_Tagdækning_ApS.db")
@@ -70,6 +71,10 @@ def add_new_product(produktnavn, produktnummer, antal, mål, producent, produktk
     except sqlite3.Error as e:
         conn.rollback()
         print(f"Kunne ikke indsætte!: {e}")
+
+def bestilling_til_lager():
+    conn = sqlite3.connect(database="GTV_Tagdækning_ApS.db")
+    query = """"""
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
