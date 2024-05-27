@@ -121,3 +121,7 @@ def bestilte_varer_post():
 @app.route('/prisliste', methods=['POST', 'GET'])
 def prisliste():
     return flask.render_template("prisliste.html")
+
+@app.route('/test', methods=['POST', 'GET'])
+def test_site():
+    return flask.render_template("tester.html")
