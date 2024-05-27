@@ -10,10 +10,9 @@
     background-color: #778DB0!important;
 }
 
-.btn-open-popup { 
-    /* padding: 12px 24px;  */
+.btn-open-popup {
     font-size: 18px; 
-    background-color: #1D407B; 
+    background-color: #778DB0; 
     color: #fff; 
     border: none; 
     border-radius: 8px; 
@@ -132,7 +131,6 @@
     background-color: #ee1800; 
 } 
 
-/* Keyframes for fadeInUp animation */ 
 @keyframes fadeInUp { 
     from { 
         opacity: 0; 
@@ -145,12 +143,12 @@
     } 
 } 
 
-/* Animation for popup */ 
 .overlay-container.show { 
     display: flex; 
     opacity: 1; 
 } 
 
+/* CSS til PDF på Prisliste siden */
 .pdf {
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -160,3 +158,42 @@
 }
 
 
+
+/* styling til tables i Bestillingsoversigt siden */
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    margin-left: 0.1%;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 99.8%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead th{
+    background-color: #778DB0;
+    color: #FFFFFF;
+    text-align: left;
+}
+
+th,
+td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #bbc7d9;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #778DB0;
+}
+
+.styled-table tbody td {
+    border-right: 2px solid #778DB0;
+    border-left: 2px solid #778DB0;
+}

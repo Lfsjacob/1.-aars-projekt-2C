@@ -5,9 +5,32 @@
 {% block title %}Bestilte varer{% endblock %}
 
 {% block content%}
+
 <body> 
-    <div style="float:left">
-    </div>
+    
+    <table class="styled-table">
+        <thead>
+            <th></th>
+            <th>Produktnavn</th>
+            <th>Produktnummer</th>
+            <th>Antal</th>
+            <th>Mål</th>
+            <th>Producent</th>
+            <th>Produktkategori</th>
+            <th>Pris</th>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td><form action="" method="POST"><input type="submit" name="fjern_vare" value={{item[0]}}></form></td>
+                {% for j in item[1::] %}
+                    <td>{{j}}</td>
+                {% endfor %}
+            </td>
+        {% endfor %}
+        </tbody>
+    
+    
     <button class="btn-open-popup" onclick="togglePopup()"> 
         <image src="static/Add_moerk_hvid.png" width="50" height="50"></image> 
         Tilføj bestilt vare
@@ -26,7 +49,7 @@
                     
                     <input class="form-input-side-by-side" type="text" placeholder="..." id="pnavn" name="pnavn" required> 
                     
-                    <input class="form-input-side-by-side" type="text" placeholder="..." id="EAN" name="EAN">
+                    <input class="form-input-side-by-side" type="number" placeholder="..." id="EAN" name="EAN">
 
                     <label class="form-label" for="antal">Antal:*</label>
                     
@@ -34,7 +57,7 @@
                     
                     <input class="form-input-side-by-side" type="number" placeholder="..." id="antal" name="antal" required>
                     
-                    <input class="form-measurements-input" type="number" placeholder="..." id="bredde" name="bredde" required>
+                    <input class="form-measurements-input" type="number" placeholder="..." id="bredde" name="bredde" step=".01" required>
                     
                     <select class="form-unit-input" id="benhed" name="benhed" required>
                         <option value="blank">---</option>
@@ -47,7 +70,7 @@
                     
                     <label class="form-label" for="producent">Producent:</label> 
                     
-                    <input class="form-measurements-input" type="number" placeholder="..." id="længde" name="længde" required>
+                    <input class="form-measurements-input" type="number" placeholder="..." id="længde" name="længde" step=".01" required>
                     
                     <select class="form-unit-input" id="lenhed" name="lenhed" required>
                         <option value="blank">---</option>
@@ -64,7 +87,7 @@
                     
                     <input class="form-input-side-by-side" type="text" placeholder="..." id="pkategori" name="pkategori">
 
-                    <input class="form-input-side-by-side" type="text" placeholder="..." id="pris" name="pris">
+                    <input class="form-input-side-by-side" type="number" placeholder="..." id="pris" step="0.1" name="pris">
                 </div>
 
                 <button class="btn-submit" 
