@@ -43,7 +43,9 @@ def register():
             data = (username, password)
             cur.execute(query, data)
             conn.commit()
-
+		except:
+	
+	
     
 
 		# user = Users(username=request.form.get("username"),
