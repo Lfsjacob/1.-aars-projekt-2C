@@ -3,7 +3,6 @@
 {% block title %}Lager{% endblock %}
 
 {% block content%}
-
 <div>
     <br>
     <h1>Lageroversigt</h1>
@@ -11,11 +10,11 @@
     <table>
         <tr>
             <th>Produktnavn</th>
-            <th>Produkttype</th>
             <th>Produktnummer</th>
-            <th>Producent</th>
             <th>Antal</th>
             <th>Mål</th>
+            <th>Producent</th>
+            <th>Produktkategori</th>
             <th>Pris</th>
         </tr>
 
@@ -29,36 +28,122 @@
     </table><br>
     <br>
 
-    <h2>Tilføj vare:</h2>
+    <!-- <h2>Tilføj vare:</h2>
     <form action="" method="POST">
         <label for="produktnavn">Produktnavn</label><br>
         <input type="text" id="produktnavn" name="produktnavn"><br>
-        <br>
-        
-        <label for="produkttype">Produkttype</label><br>
-        <input type="text" id="produkttype" name="produkttype"><br>
         <br>
 
         <label for="produktnummer">Produktnummer</label><br>
         <input type="text" id="produktnummer" name="produktnummer"><br>
         <br>
 
-        <label for="producent">Producent</label><br>
-        <input type="text" id="producent" name="producent"><br>
-        <br>
-
         <label for="antal">Antal</label><br>
         <input type="text" id="antal" name="antal"><br>
+        <br>
+
+        <label for="længde">Længde</label><br>
+        <input type="text" id="længde" name="længde"><br>
+        <br>
+
+        <label for="længde_enhed">Længdeenhed</label><br>
+        <input type="text" id="længde_enhed" name="længde_enhed"><br>
+        <br>
+
+        <label for="bredde">Bredde</label><br>
+        <input type="text" id="bredde" name="bredde"><br>
+        <br>
+
+        <label for="bredde_enhed">Bredde enhed</label><br>
+        <input type="text" id="bredde_enhed" name="bredde_enhed"><br>
         <br>
 
         <label for="mål">Mål</label><br>
         <input type="text" id="mål" name="mål"><br>
         <br>
 
+        <label for="producent">Producent</label><br>
+        <input type="text" id="producent" name="producent"><br>
+        <br>
+
+        <label for="produktkategori">Produktkategori</label><br>
+        <input type="text" id="produktkategori" name="produktkategori"><br>
+        <br>
+
         <label for="pris">Pris</label><br>
         <input type="text" id="pris" name="pris"><br>
         <br>
         <input type="submit" value="Submit">
-    </form>
+    </form> -->
+
+
+    <button class="btn-open-popup" onclick="togglePopup()">Tilføj vare</button> 
+    
+      <div id="popupOverlay" class="overlay-container"> 
+          <div class="popup-box"> 
+              <h2 style="color: #1D407B;">Bestilt produkt</h2> 
+              <form class="form-container" action="" method="POST">
+                  
+                  <div style="float:left">
+                      <label class="form-label" for="produktnavn">Produktnavn:*</label> 
+                      
+                      <label class="form-label" for="produktnummer">Produktnummer:</label> 
+                      
+                      <input class="form-input-side-by-side" type="text" placeholder="..." id="produktnavn" name="produktnavn" required> 
+                      
+                      <input class="form-input-side-by-side" type="text" placeholder="..." id="produktnummer" name="produktnummer">
+  
+                      <label class="form-label" for="antal">Antal:*</label>
+                      
+                      <label class="form-label" for="bredde">Bredde:*</label>
+                      
+                      <input class="form-input-side-by-side" type="number" placeholder="..." id="antal" name="antal" required>
+                      
+                      <input class="form-measurements-input" type="number" placeholder="..." id="bredde" name="bredde" required>
+                      
+                      <select class="form-unit-input" id="bredde_enhed" name="bredde_enhed" required>
+                      <option value="blank">---</option>
+                      <option value="mm">mm</option>
+                      <option value="cm">cm</option>
+                      <option value="m">m</option>
+                      </select>
+                  
+                      <label class="form-label" for="længde">Længde:*</label> 
+                      
+                      <label class="form-label" for="producent">Producent:</label> 
+                      
+                      <input class="form-measurements-input" type="number" placeholder="..." id="længde" name="længde" required>
+                      
+                      <select class="form-unit-input" id="længde_enhed" name="længde_enhed" required>
+                      <option value="blank">---</option>
+                      <option value="mm">mm</option>
+                      <option value="cm">cm</option>
+                      <option value="m">m</option>
+                      </select>
+                  
+                      <input class="form-input-side-by-side" type="text" placeholder="..." id="producent" name="producent">
+  
+                      <label class="form-label" for="produktkategori">Produktkategori:</label> 
+                      
+                      <label class="form-label" for="pris">Pris:</label> 
+                      
+                      <input class="form-input-side-by-side" type="text" placeholder="..." id="produktkategori" name="produktkategori">
+  
+                      <input class="form-input-side-by-side" type="text" placeholder="..." id="pris" name="pris">
+                  </div>
+  
+                  <button class="btn-submit" type="submit">Indsend</button> 
+              </form> 
+    
+              <button class="btn-close-popup" onclick="togglePopup()">Luk</button> 
+          </div> 
+      </div>
 </div>
 {% endblock %}
+
+
+
+
+
+
+

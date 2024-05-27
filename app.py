@@ -14,8 +14,9 @@ def index():
 
 @app.route('/lager', methods = ['POST', 'GET'])
 def lager():
-    conn = sqlite3.connect(database='database/database.db')
-    QUERY = "SELECT Produktnavn, Produkttype, Produktnummer, Producent, Antal, Mål, Pris FROM Lager ORDER BY id DESC"
+    data_rows = []
+    conn = sqlite3.connect(database='database/ny_database.db')
+    QUERY = "SELECT Produktnavn, Produktnummer, Antal, Mål, Producent, Produktkategori, Pris FROM Lageroversigt ORDER BY id DESC"
 
     try:
         cur = conn.cursor()
@@ -35,21 +36,26 @@ def lager():
 
     if request.method == 'POST':
         produktnavn = request.form.get('produktnavn')
-        produkttype = request.form.get('produkttype')
         produktnummer = request.form.get('produktnummer')
-        producent = request.form.get('producent')
         antal = request.form.get('antal')
-        mål = request.form.get('mål')
+        længde = request.form.get('længde')
+        længde_enhed = request.form.get('længde_enhed')
+        bredde = request.form.get('bredde')
+        bredde_enhed = request.form.get('bredde_enhed')
+        mål = f"B: {bredde} {bredde_enhed} L: {længde} {længde_enhed}"
+        producent = request.form.get('producent')
+        produktkategori = request.form.get('produktkategori')
         pris = request.form.get('pris')
        
-        conn = sqlite3.connect(database='database/database.db')
-        query = "INSERT INTO Lager(Produktnavn, Produkttype, Produktnummer, Producent, Antal, Mål, Pris) VALUES (?, ?, ?, ?, ?, ?, ?)"
-        data = (produktnavn, produkttype, produktnummer, producent, antal, mål, pris)
-        query2 = "SELECT Produktnavn, Produkttype, Produktnummer, Producent, Antal, Mål, Pris FROM Lager ORDER BY id DESC"
+        conn = sqlite3.connect(database='database/ny_database.db')
+        query = "INSERT INTO Lageroversigt(Produktnavn, Produktnummer, Antal, Mål, Producent, Produktkategori, Pris) VALUES (?, ?, ?, ?, ?, ?, ?)"
+        data = (produktnavn, produktnummer, antal, mål, producent, produktkategori, pris)
+        query2 = "SELECT Produktnavn, Produktnummer, Antal, Mål, Producent, Produktkategori, Pris FROM Lageroversigt ORDER BY id DESC"
 
         try:
             cur = conn.cursor()
             cur.execute(query, data)
+            conn.commit()
             cur.execute(query2)
             data_rows = cur.fetchall()
         except sqlite3.OperationalError as oe:
@@ -63,6 +69,8 @@ def lager():
         finally:
             cur.close()
             conn.close()
+
+        
 
     return render_template('lager.html', data_rows = data_rows)
 
