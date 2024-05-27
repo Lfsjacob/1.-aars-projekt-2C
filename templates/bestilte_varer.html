@@ -22,7 +22,7 @@
         <tbody>
         {% for item in items %}
             <tr>
-                <td><form action="" method="POST"><input type="submit" name="fjern_vare" value={{item[0]}}></form></td>
+                <td><form action="" method="POST"><button type="submit" name="fjern_vare" value={{item[0]}}>Fjern vare</button></form></td>
                 {% for j in item[1::] %}
                     <td>{{j}}</td>
                 {% endfor %}
