@@ -1,4 +1,5 @@
 import sqlite3
+import subprocess
 
 import flask
 
@@ -265,3 +266,19 @@ def login():
             if row[1] == username and row[2] == password:
                 return flask.render_template("index.html")
     return flask.render_template("login.html")
+
+@app.route('/deploy', methods=['POST'])
+def deploy():
+    if flask.request.method == 'POST':
+        payload = flask.request.get_json()
+
+        repo_dir = "/var/www/flaskapp"
+        subprocess.run(['git', 'pull'], cwd=repo_dir)
+
+        # Restart Gunicorn to load new changes
+        subprocess.run(['sudo', 'systemctl', 'restart', 'gunicorn'])
+
+        return 'Updated code from GitHub', 200
+    
+    if __name__ == "__main__":
+        app.run(host="0.0.0.0")
