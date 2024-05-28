@@ -7,7 +7,7 @@
 {% block content%}
 
 <body> 
-    
+<div>
     <table class="styled-table">
         <thead>
             <th></th>
@@ -22,19 +22,19 @@
         <tbody>
         {% for item in items %}
             <tr>
-                <td><form action="" method="POST"><button type="submit" name="fjern_vare" value={{item[0]}}>Fjern vare</button></form></td>
+                <td><form action="" method="POST"><button class="btn-submit" type="submit" name="fjern_vare" value={{item[0]}}>Fjern vare</button></form></td>
                 {% for j in item[1::] %}
                     <td>{{j}}</td>
                 {% endfor %}
             </td>
         {% endfor %}
         </tbody>
-    
+    </table>
     
     <button class="btn-open-popup" onclick="togglePopup()"> 
         <image src="static/Add_moerk_hvid.png" width="50" height="50"></image> 
         Tilføj bestilt vare
-      </button> 
+      </button>
     
     <div id="popupOverlay" 
          class="overlay-container"> 
@@ -102,6 +102,7 @@
               </button> 
         </div> 
     </div> 
+</div>
 </body> 
   
 </html>

@@ -100,7 +100,7 @@ def delete_amount(id, tablename):
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
-    return flask.render_template("base.html")
+    return flask.render_template("tester.html")
 
 @app.route('/lager', methods=['POST', 'GET'])
 def lager():

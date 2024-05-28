@@ -1,3 +1,5 @@
+body { background-color: #778DB0; }
+
 .bg-gtvdark {
     background-color: #1D407B!important;
     }
@@ -12,7 +14,7 @@
 
 .btn-open-popup {
     font-size: 18px; 
-    background-color: #778DB0; 
+    background-color: #1D407B; 
     color: #fff; 
     border: none; 
     border-radius: 8px; 
@@ -21,7 +23,7 @@
 } 
 
 .btn-open-popup:hover { 
-    background-color: #778DB0; 
+    background-color: #4A6695; 
 } 
 
 .overlay-container { 
@@ -124,7 +126,7 @@
 } 
 
 .btn-submit:hover {
-    background-color: #778DB0; 
+    background-color: #4A6695; 
 }
 
 .btn-close-popup:hover { 
@@ -171,7 +173,7 @@
 }
 
 .styled-table thead th{
-    background-color: #778DB0;
+    background-color: #4A6695;
     color: #FFFFFF;
     text-align: left;
 }
@@ -194,8 +196,8 @@ td {
 }
 
 .styled-table tbody td {
-    border-right: 2px solid #778DB0;
-    border-left: 2px solid #778DB0;
+    border-right: 2px solid #1D407B;
+    border-left: 2px solid #1D407B;
 }
 
 
