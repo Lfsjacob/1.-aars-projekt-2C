@@ -1,0 +1,209 @@
+body { background-color: #778DB0; }
+
+.bg-gtvdark {
+    background-color: #1D407B!important;
+    }
+
+.bg-gtvmedium {
+    background-color: #4A6695!important;
+    }
+
+.bg-gtvlight {
+    background-color: #778DB0!important;
+}
+
+.btn-open-popup {
+    font-size: 18px; 
+    background-color: #1D407B; 
+    color: #fff; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+} 
+
+.btn-open-popup:hover { 
+    background-color: #4A6695; 
+} 
+
+.overlay-container { 
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.6); 
+    justify-content: center; 
+    align-items: center; 
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+} 
+
+.popup-box { 
+    background: #fff; 
+    padding: 24px; 
+    border-radius: 12px; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); 
+    width: 640px; 
+    text-align: center; 
+    opacity: 0; 
+    transform: scale(0.8); 
+    animation: fadeInUp 0.5s ease-out forwards; 
+} 
+
+.form-container { 
+    display: flex; 
+    flex-direction: column; 
+} 
+
+.form-label { 
+    margin-bottom: 10px; 
+    font-size: 16px; 
+    color: #444; 
+    width: 49%;
+    text-align: left; 
+} 
+
+.form-input { 
+    padding: 10px; 
+    margin-bottom: 20px; 
+    border: 1px solid #1D407B; 
+    border-radius: 8px; 
+    font-size: 16px; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.form-input-side-by-side { 
+    padding: 10px; 
+    margin-bottom: 20px; 
+    border: 1px solid #1D407B; 
+    border-radius: 8px; 
+    font-size: 16px; 
+    width: 49%; 
+    box-sizing: border-box; 
+}
+
+.form-measurements-input { 
+    padding: 10px; 
+    margin-bottom: 20px; 
+    border: 1px solid #1D407B; 
+    border-radius: 8px; 
+    font-size: 16px; 
+    width: 38%; 
+    box-sizing: border-box; 
+}
+
+.form-unit-input { 
+    padding: 10px; 
+    margin-bottom: 20px; 
+    border: 1px solid #1D407B; 
+    border-radius: 8px; 
+    font-size: 16px; 
+    width: 10%; 
+    box-sizing: border-box; 
+}
+
+.btn-submit, 
+.btn-close-popup { 
+    padding: 12px 24px; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+} 
+
+.btn-submit { 
+    background-color: #1D407B; 
+    color: #fff; 
+} 
+
+.btn-close-popup { 
+    margin-top: 12px; 
+    background-color: #e74c3c; 
+    color: #fff; 
+} 
+
+.btn-submit:hover {
+    background-color: #4A6695; 
+}
+
+.btn-close-popup:hover { 
+    background-color: #ee1800; 
+} 
+
+@keyframes fadeInUp { 
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    } 
+
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+} 
+
+.overlay-container.show { 
+    display: flex; 
+    opacity: 1; 
+} 
+
+/* CSS til PDF på Prisliste siden */
+.pdf {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* styling til tables i Bestillingsoversigt siden */
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    margin-left: 0.1%;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 99.8%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead th{
+    background-color: #4A6695;
+    color: #FFFFFF;
+    text-align: left;
+}
+
+th,
+td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #bbc7d9;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #778DB0;
+}
+
+.styled-table tbody td {
+    border-right: 2px solid #1D407B;
+    border-left: 2px solid #1D407B;
+}
+
+
+.frontpage-img {
+    float: left;
+    /* margin-left: 0.1%; */
+    width: 33%;
+    height: 100%;
+}

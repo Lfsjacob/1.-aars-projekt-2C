@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}Bestilte varer{% endblock %}
+
+{% block content%}
+
+<body> 
+<div>
+    <table class="styled-table">
+        <thead>
+            <th></th>
+            <th>Produktnavn</th>
+            <th>Produktnummer</th>
+            <th>Antal</th>
+            <th>Mål</th>
+            <th>Producent</th>
+            <th>Produktkategori</th>
+            <th>Pris</th>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td><form action="" method="POST"><button class="btn-submit" type="submit" name="fjern_vare" value={{item[0]}}>Fjern vare</button></form></td>
+                {% for j in item[1::] %}
+                    <td>{{j}}</td>
+                {% endfor %}
+            </td>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    <button class="btn-open-popup" onclick="togglePopup()"> 
+        <image src="static/Add_moerk_hvid.png" width="50" height="50"></image> 
+        Tilføj bestilt vare
+      </button>
+    
+    <div id="popupOverlay" 
+         class="overlay-container"> 
+        <div class="popup-box"> 
+            <h2 style="color: #1D407B;">Bestilt produkt</h2> 
+            <form class="form-container" method="POST">
+                
+                <div style="float:left">
+                    <label class="form-label" for="pnavn">Produktnavn:*</label> 
+                    
+                    <label class="form-label" for="EAN">Produktnummer:</label> 
+                    
+                    <input class="form-input-side-by-side" type="text" placeholder="..." id="pnavn" name="pnavn" required> 
+                    
+                    <input class="form-input-side-by-side" type="number" placeholder="..." id="EAN" name="EAN">
+
+                    <label class="form-label" for="antal">Antal:*</label>
+                    
+                    <label class="form-label" for="bredde">Bredde:*</label>
+                    
+                    <input class="form-input-side-by-side" type="number" placeholder="..." id="antal" name="antal" required>
+                    
+                    <input class="form-measurements-input" type="number" placeholder="..." id="bredde" name="bredde" step=".01" required>
+                    
+                    <select class="form-unit-input" id="benhed" name="benhed" required>
+                        <option value="blank">---</option>
+                        <option value="mm">mm</option>
+                        <option value="cm">cm</option>
+                        <option value="m">m</option>
+                    </select>
+                
+                    <label class="form-label" for="længde">Længde:*</label> 
+                    
+                    <label class="form-label" for="producent">Producent:</label> 
+                    
+                    <input class="form-measurements-input" type="number" placeholder="..." id="længde" name="længde" step=".01" required>
+                    
+                    <select class="form-unit-input" id="lenhed" name="lenhed" required>
+                        <option value="blank">---</option>
+                        <option value="mm">mm</option>
+                        <option value="cm">cm</option>
+                        <option value="m">m</option>
+                    </select>
+                
+                    <input class="form-input-side-by-side" type="text" placeholder="..." id="producent" name="producent">
+
+                    <label class="form-label" for="pkategori">Produktkategori:</label> 
+                    
+                    <label class="form-label" for="pris">Pris:</label> 
+                    
+                    <input class="form-input-side-by-side" type="text" placeholder="..." id="pkategori" name="pkategori">
+
+                    <input class="form-input-side-by-side" type="number" placeholder="..." id="pris" step="0.1" name="pris">
+                </div>
+
+                <button class="btn-submit" 
+                        type="submit"> 
+                  Indsend 
+                  </button> 
+            </form> 
+  
+            <button class="btn-close-popup" 
+                    onclick="togglePopup()"> 
+              Luk 
+              </button> 
+        </div> 
+    </div> 
+</div>
+</body> 
+  
+</html>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Lager{% endblock %}
+
+{% block content%}
+
+<div>
+    <br>
+    <h2>Tilføj vare:</h2>
+    <form action="" method="POST">
+        <label for="første_variabel">Første variabel</label>
+        <input type="text" id="første_variabel" name="første_variabel">
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if første_variabel %}
+    <h1>Lageroversigt</h1>
+
+    <table>
+        <tr>
+            <th>Header</th>
+            <th>Header 2</th>
+        </tr>
+
+        <tr>
+            <td>{{ første_variabel }}</td>
+            <td>Pant</td>
+        </tr>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}
