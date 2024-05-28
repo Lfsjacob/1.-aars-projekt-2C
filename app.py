@@ -100,7 +100,7 @@ def delete_amount(id, tablename):
         conn.rollback()
         print(f"Kunne ikke slette!: {e}")
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/home', methods=['POST', 'GET'])
 def home():
     return flask.render_template("index.html")
 
@@ -250,18 +250,18 @@ def register():
 	return flask.render_template("register.html")
 
 
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def login():
-	if flask.request.method == "POST":
-		username = flask.request.form.get('brugernavn')
-		password = flask.request.form.get('password')
-		conn= sqlite3.connect(database="GTV_Tagdækning_ApS.db")
-		cur = conn.cursor()
-		query = f"SELECT * FROM Users"
-		data = (username, password)
-		cur.execute(query, data)
-		for row in cur:
-			if row[0] == username and row[1] == password:
-				return flask.render_template("login.html")
-
-	return flask.render_template("login.html")
+    if flask.request.method == "POST":
+        username = flask.request.form.get('brugernavn')
+        password = flask.request.form.get('password')
+        conn= sqlite3.connect(database="GTV_Tagdækning_ApS.db")
+        cur = conn.cursor()
+        query = f"SELECT * FROM Users"
+        cur.execute(query)
+        results = cur.fetchall()
+        for row in results:
+            print(row)
+            if row[1] == username and row[2] == password:
+                return flask.render_template("index.html")
+    return flask.render_template("login.html")
