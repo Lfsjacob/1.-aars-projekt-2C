@@ -3,30 +3,112 @@
 {% block title %}Lager{% endblock %}
 
 {% block content%}
-
 <div>
     <br>
-    <h2>Tilføj vare:</h2>
-    <form action="" method="POST">
-        <label for="første_variabel">Første variabel</label>
-        <input type="text" id="første_variabel" name="første_variabel">
-        <input type="submit" value="Submit">
-    </form>
-
-    {% if første_variabel %}
     <h1>Lageroversigt</h1>
 
-    <table>
-        <tr>
-            <th>Header</th>
-            <th>Header 2</th>
-        </tr>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Produktnavn</th>
+                <th>Produktnummer</th>
+                <th>Antal</th>
+                <th>Mål</th>
+                <th>Producent</th>
+                <th>Produktkategori</th>
+                <th>Pris</th>
+            </tr>
+        </thead>
 
+        {% for item in data_rows %}
         <tr>
-            <td>{{ første_variabel }}</td>
-            <td>Pant</td>
+            <td>
+                <form action="" method="POST">
+                    <button class="btn-submit" type="submit" name="fjern_vare" value="{{ item[0] }}">Fjern vare</button>
+                </form>
+            </td>
+            {% for j in item[1::] %}
+            <td>{{ j }}</td>
+            {% endfor %}
         </tr>
-    </table>
-    {% endif %}
+        {% endfor%}
+    </table><br>
+
+    
+
+
+    <button class="btn-open-popup" onclick="togglePopup()" style="margin-left: 1%;">
+        <image src="static/Add_moerk_hvid.png" width="50" height="50"></image>
+        Tilføj vare</button>
+    <br>
+    <br> 
+    
+      <div id="popupOverlay" class="overlay-container"> 
+          <div class="popup-box"> 
+              <h2 style="color: #1D407B;">Tilføj vare</h2> 
+              <form class="form-container" action="" method="POST">
+                  
+                  <div style="float:left">
+                      <label class="form-label" for="produktnavn">Produktnavn:*</label> 
+                      
+                      <label class="form-label" for="produktnummer">Produktnummer:</label> 
+                      
+                      <input class="form-input-side-by-side" type="text" placeholder="..." id="produktnavn" name="produktnavn" required> 
+                      
+                      <input class="form-input-side-by-side" type="text" placeholder="..." id="produktnummer" name="produktnummer">
+  
+                      <label class="form-label" for="antal">Antal:*</label>
+                      
+                      <label class="form-label" for="bredde">Bredde:*</label>
+                      
+                      <input class="form-input-side-by-side" type="number" placeholder="..." id="antal" name="antal" required>
+                      
+                      <input class="form-measurements-input" type="number" placeholder="..." id="bredde" name="bredde" required>
+                      
+                      <select class="form-unit-input" id="bredde_enhed" name="bredde_enhed" required>
+                      <option value="blank">---</option>
+                      <option value="mm">mm</option>
+                      <option value="cm">cm</option>
+                      <option value="m">m</option>
+                      </select>
+                  
+                      <label class="form-label" for="længde">Længde:*</label> 
+                      
+                      <label class="form-label" for="producent">Producent:</label> 
+                      
+                      <input class="form-measurements-input" type="number" placeholder="..." id="længde" name="længde" required>
+                      
+                      <select class="form-unit-input" id="længde_enhed" name="længde_enhed" required>
+                      <option value="blank">---</option>
+                      <option value="mm">mm</option>
+                      <option value="cm">cm</option>
+                      <option value="m">m</option>
+                      </select>
+                  
+                      <input class="form-input-side-by-side" type="text" placeholder="..." id="producent" name="producent">
+  
+                      <label class="form-label" for="produktkategori">Produktkategori:</label> 
+                      
+                      <label class="form-label" for="pris">Pris:</label> 
+                      
+                      <input class="form-input-side-by-side" type="text" placeholder="..." id="produktkategori" name="produktkategori">
+  
+                      <input class="form-input-side-by-side" type="text" placeholder="..." id="pris" name="pris">
+                  </div>
+  
+                  <button class="btn-submit" type="submit">Indsend</button> 
+              </form> 
+    
+              <button class="btn-close-popup" onclick="togglePopup()">Luk</button> 
+          </div> 
+      </div>
 </div>
 {% endblock %}
+
+
+
+
+
+
+
