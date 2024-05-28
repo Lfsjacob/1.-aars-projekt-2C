@@ -28,21 +28,29 @@ tr:hover {
     background-color: #f1f1f1;
 }
 
-caption {
-    caption-side: bottom;
-    padding: 10px;
-    font-style: italic;
-    color: #666;
-}
-
 h1 {
-    font-size: 24px; 
+    font-size: 30px; 
     font-weight: bold; 
     color: #333; 
     margin: 10px 0; 
     padding: 0; 
     text-align: center; 
     text-transform: uppercase; 
+}
+
+.styled-button {
+    background-color: #081f78;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.1s ease;
+}
+
+.styled-button:hover {
+    background-color: #0b35da;
 }
 
 .btn-open-popup { 
