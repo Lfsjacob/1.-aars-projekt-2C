@@ -144,7 +144,7 @@ def lager_post():
     mål = f"B: {bredde} {bredde_enhed} L: {længde} {længde_enhed}"
     producent = flask.request.form.get('producent')
     produktkategori = flask.request.form.get('produktkategori')
-    pris = flask.request.form.get('pris')
+    pris = f"{flask.request.form.get('pris')} kr."
     
     conn = sqlite3.connect(database='GTV_Tagdækning_ApS.db')
     query = "INSERT INTO Lageroversigt(Produktnavn, Produktnummer, Antal, Mål, Producent, Produktkategori, Pris) VALUES (?, ?, ?, ?, ?, ?, ?)"
