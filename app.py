@@ -10,7 +10,6 @@ master_key = "Tagpap123"
 def match(produktinfo, tablename):
     print("Tjekker rute")
     new = 0
-    route = tablename
     try:
         conn = sqlite3.connect(database="GTV_Tagdækning_ApS.db")
         cur = conn.cursor()
@@ -130,15 +129,18 @@ def lager_get():
 
 @app.route('/lager', methods=['POST'])
 def lager_post():
-    data_rows = []
 
     produktnavn = flask.request.form.get('produktnavn')
     produktnummer = flask.request.form.get('produktnummer')
     antal = flask.request.form.get('antal')
-    længde = flask.request.form.get('længde')
-    længde_enhed = flask.request.form.get('længde_enhed')
     bredde = flask.request.form.get('bredde')
-    bredde_enhed = flask.request.form.get('bredde_enhed')
+    bredde_enhed = flask.request.form.get('benhed')
+    if bredde_enhed == "m":
+        bredde = "%.2f" % float(bredde)
+    længde = flask.request.form.get('længde')
+    længde_enhed = flask.request.form.get('lenhed')
+    if længde_enhed == "m":
+        længde = "%.2f" % float(længde)
     mål = f"B: {bredde} {bredde_enhed} L: {længde} {længde_enhed}"
     producent = flask.request.form.get('producent')
     produktkategori = flask.request.form.get('produktkategori')
@@ -147,14 +149,11 @@ def lager_post():
     conn = sqlite3.connect(database='GTV_Tagdækning_ApS.db')
     query = "INSERT INTO Lageroversigt(Produktnavn, Produktnummer, Antal, Mål, Producent, Produktkategori, Pris) VALUES (?, ?, ?, ?, ?, ?, ?)"
     data = (produktnavn, produktnummer, antal, mål, producent, produktkategori, pris)
-    query2 = "SELECT ID, Produktnavn, Produktnummer, Antal, Mål, Producent, Produktkategori, Pris FROM Lageroversigt ORDER BY id ASC"
 
     try:
         cur = conn.cursor()
         cur.execute(query, data)
         conn.commit()
-        cur.execute(query2)
-        data_rows = cur.fetchall()
     except sqlite3.OperationalError as oe:
         print(f"Transaction could not be processed: {oe}")
     except sqlite3.IntegrityError as ie:
