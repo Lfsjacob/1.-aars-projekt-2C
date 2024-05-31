@@ -262,7 +262,6 @@ def login():
         cur.execute(query)
         results = cur.fetchall()
         for row in results:
-            print(row)
             if row[1] == username and row[2] == password:
                 return flask.render_template("index.html")
     return flask.render_template("login.html")
