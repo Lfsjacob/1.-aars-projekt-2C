@@ -8,26 +8,19 @@ app = flask.Flask(__name__)
 master_key = "Tagpap123"
 
 def match(produktinfo, tablename):
-    print("Tjekker rute")
     new = 0
     try:
         conn = sqlite3.connect(database="GTV_Tagdækning_ApS.db")
         cur = conn.cursor()
         cur.execute(f'SELECT * FROM {tablename}')
-        # for row in cur:
         results = cur.fetchall()
         for result in results:
-            print(f"{result[0]} {result[1] = }  {result[4] = }")
             if result[1] == produktinfo[0] and result[4] == produktinfo[3]:
-                print(f"{produktinfo[2] = }")
                 add_to_product(result[0], int(result[3] + int(produktinfo[2])), tablename)
-                print("JA!")
-                conn.commit()
                 new = 1
                 break
         if new == 0:
             add_new_product(produktinfo, tablename)
-        print(results)
         conn.commit()
     except Exception as e:
         print(f"Der skete en fejl: {e}")
