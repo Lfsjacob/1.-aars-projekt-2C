@@ -135,7 +135,6 @@ def lager_post():
     antal = flask.request.form.get('antal')
     længde = flask.request.form.get('længde')
     længde_enhed = flask.request.form.get('længde_enhed')
-    længde_enhed = flask.request.form.get('lenhed')
     if længde_enhed == "m":
         længde = "%.2f" % float(længde)
     bredde = flask.request.form.get('bredde')
