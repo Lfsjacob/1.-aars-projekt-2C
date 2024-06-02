@@ -10,7 +10,6 @@ master_key = "Tagpap123"
 def match(produktinfo, tablename):
     print("Tjekker rute")
     new = 0
-    route = tablename
     try:
         conn = sqlite3.connect(database="GTV_Tagdækning_ApS.db")
         cur = conn.cursor()
@@ -130,7 +129,6 @@ def lager_get():
 
 @app.route('/lager', methods=['POST'])
 def lager_post():
-    data_rows = []
 
     produktnavn = flask.request.form.get('produktnavn')
     produktnummer = flask.request.form.get('produktnummer')
@@ -144,7 +142,6 @@ def lager_post():
     bredde_enhed = flask.request.form.get('bredde_enhed')
     if bredde_enhed == "m":
         bredde = "%.2f" % float(bredde)
-    længde = flask.request.form.get('længde')
     mål = f"B: {bredde} {bredde_enhed} L: {længde} {længde_enhed}"
     producent = flask.request.form.get('producent')
     produktkategori = flask.request.form.get('produktkategori')
@@ -153,14 +150,11 @@ def lager_post():
     conn = sqlite3.connect(database='GTV_Tagdækning_ApS.db')
     query = "INSERT INTO Lageroversigt(Produktnavn, Produktnummer, Antal, Mål, Producent, Produktkategori, Pris) VALUES (?, ?, ?, ?, ?, ?, ?)"
     data = (produktnavn, produktnummer, antal, mål, producent, produktkategori, pris)
-    query2 = "SELECT ID, Produktnavn, Produktnummer, Antal, Mål, Producent, Produktkategori, Pris FROM Lageroversigt ORDER BY id ASC"
 
     try:
         cur = conn.cursor()
         cur.execute(query, data)
         conn.commit()
-        cur.execute(query2)
-        data_rows = cur.fetchall()
     except sqlite3.OperationalError as oe:
         print(f"Transaction could not be processed: {oe}")
     except sqlite3.IntegrityError as ie:
@@ -268,7 +262,6 @@ def login():
         cur.execute(query)
         results = cur.fetchall()
         for row in results:
-            print(row)
             if row[1] == username and row[2] == password:
                 return flask.render_template("index.html")
     return flask.render_template("login.html")
