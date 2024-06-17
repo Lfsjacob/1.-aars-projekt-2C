@@ -1,5 +1,4 @@
 import sqlite3
-import subprocess
 
 import flask
 
@@ -14,11 +13,12 @@ def match(produktinfo, tablename):
         cur = conn.cursor()
         cur.execute(f'SELECT * FROM {tablename}')
         results = cur.fetchall()
-        for result in results:
-            if result[1] == produktinfo[0] and result[4] == produktinfo[3]:
-                add_to_product(result[0], int(result[3] + int(produktinfo[2])), tablename)
-                new = 1
-                break
+        if tablename != "Bestillingsoversigt":
+            for result in results:
+                if result[1] == produktinfo[0] and result[4] == produktinfo[3]:
+                    add_to_product(result[0], int(result[3] + int(produktinfo[2])), tablename)
+                    new = 1
+                    break
         if new == 0:
             add_new_product(produktinfo, tablename)
         conn.commit()
@@ -138,26 +138,9 @@ def lager_post():
     producent = flask.request.form.get('producent')
     produktkategori = flask.request.form.get('produktkategori')
     pris = f"{flask.request.form.get('pris')} kr."
+    produktinfo = [produktnavn, produktnummer, antal, mål, producent, produktkategori, pris]
     
-    conn = sqlite3.connect(database='GTV_Tagdækning_ApS.db')
-    query = "INSERT INTO Lageroversigt(Produktnavn, Produktnummer, Antal, Mål, Producent, Produktkategori, Pris) VALUES (?, ?, ?, ?, ?, ?, ?)"
-    data = (produktnavn, produktnummer, antal, mål, producent, produktkategori, pris)
-
-    try:
-        cur = conn.cursor()
-        cur.execute(query, data)
-        conn.commit()
-    except sqlite3.OperationalError as oe:
-        print(f"Transaction could not be processed: {oe}")
-    except sqlite3.IntegrityError as ie:
-        print(f"Integrity constraint violated: {ie}")
-    except sqlite3.ProgrammingError as pe:
-        print(f"You used the wrong SQL table: {pe}")
-    except sqlite3.Error as e:
-        print(f"Error calling SQL: {e}")
-    finally:
-        cur.close()
-        conn.close()
+    match(produktinfo, "Lageroversigt")
 
     id = flask.request.form.get('fjern_vare')
     delete_amount(id, "Lageroversigt")
