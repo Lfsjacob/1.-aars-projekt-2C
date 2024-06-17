@@ -140,10 +140,12 @@ def lager_post():
     pris = f"{flask.request.form.get('pris')} kr."
     produktinfo = [produktnavn, produktnummer, antal, mål, producent, produktkategori, pris]
     
-    match(produktinfo, "Lageroversigt")
-
-    id = flask.request.form.get('fjern_vare')
-    delete_amount(id, "Lageroversigt")
+    if produktnavn is not None:
+        match(produktinfo, "Lageroversigt")
+    
+    if produktnavn is None:
+        id = flask.request.form.get('fjern_vare')
+        delete_amount(id, "Lageroversigt")
 
     return lager_get()
 
